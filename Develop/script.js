@@ -1,7 +1,7 @@
 // Assignment Code
 // Query selectors
 var generateBtn = document.querySelector("#generate");
-var password = document.querySelector("password");
+var password = document.querySelector("#password");
 
 // variables for all lower and uppercase letters, numbers, and characters
 var lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -10,10 +10,8 @@ var numbers = "0123456789";
 var specialCharacters = " !\"#$%&\'()*+,-./:;<=>?@[]^_\`{|}~";
 var optionsVariable = "";
 
-generateBtn.addEventListener("click", writePassword);
-
 // Write password to the #password input
-function writePassword() {
+function writePassword(event) {
 
   event.preventDefault();
 
@@ -60,6 +58,6 @@ function writePassword() {
   }
   password.value = randomString;
 }
-// writePassword();
+
 // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword);
