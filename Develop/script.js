@@ -51,7 +51,7 @@ function writePassword(event) {
     if (special) {
       optionsVariable += specialCharacters;
     }
-console.log(optionsVariable)
+
     for (var i = 0; i < passwordLength; i++) {
       randomString += optionsVariable.charAt(Math.floor(Math.random() * optionsVariable.length));
     }
