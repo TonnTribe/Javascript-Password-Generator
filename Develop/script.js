@@ -19,44 +19,44 @@ function writePassword(event) {
   var randomString = "";
 
   // password criteria
-  var lowercaseLetter = confirm("Do you want your password to include lowercase letters?");
-  var uppercaseLetter = confirm("Do you want your password to include uppercase letters?");
-  var num = confirm("Do you want your password to include numbers?");
-  var special = confirm("Do you want your password to include special characters?");
-  var passwordLength = prompt("Choose a password length of at least 8-128 characters.");
+  
+  var passwordLength = prompt("Choose a password length of at least 8-128 characters.");    
 
   if (passwordLength < 8 || passwordLength > 128) {
     alert("Your password is not between 8-128 characters. Please try again.");
-    var passwordLength = prompt("Choose a password length of 8-128 characters.");
-  }
+    return ""
+  } else {
 
-  else if (lowercaseLetter === false && uppercaseLetter === false && num === false && specialChar === false) {
-    var lowercaseLetter = confirm("Do not want your password to contain lowercase letter?");
-    var uppercaseLetter = confirm("Do not want your password to contain uppercase letter?");
-    var num = confirm("Do not want your password to contain numbers?");
-    var special = confirm("Do not want your password to contain special characters?");
-  }
+    var lowercaseLetter = confirm("Do you want your password to include lowercase letters?");
+    var uppercaseLetter = confirm("Do you want your password to include uppercase letters?");
+    var num = confirm("Do you want your password to include numbers?");
+    var special = confirm("Do you want your password to include special characters?");
+    
+    if (lowercaseLetter === false && uppercaseLetter === false && num === false && special === false) {
+      alert("error");
+      return ""
+    }
+    if (lowercaseLetter) {
+      optionsVariable += lowercaseAlphabet;
+    }
 
-  if (lowercaseLetter) {
-    optionsVariable += lowercaseAlphabet;
-  }
+    if (uppercaseLetter) {
+      optionsVariable += uppercaseAlphabet;
+    }
 
-  if (uppercaseLetter) {
-    optionsVariable += uppercaseAlphabet;
-  }
+    if (num) {
+      optionsVariable += numbers;
+    }
 
-  if (num) {
-    optionsVariable += numbers;
+    if (special) {
+      optionsVariable += specialCharacters;
+    }
+console.log(optionsVariable)
+    for (var i = 0; i < passwordLength; i++) {
+      randomString += optionsVariable.charAt(Math.floor(Math.random() * optionsVariable.length));
+    }
+    password.value = randomString;
   }
-
-  if (special) {
-    optionsVariable += specialCharacters;
-  }
-
-  for (var i = 0; i < passwordLength; i++) {
-    randomString += optionsVariable.charAt(Math.floor(Math.random() * optionsVariable.length));
-  }
-  password.value = randomString;
 }
 
 // Add event listener to generate button
